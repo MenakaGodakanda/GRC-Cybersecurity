@@ -1,5 +1,6 @@
 # Comprehensive Governance, Risk, and Compliance (GRC) Tool for Cybersecurity
-This project demonstrates a comprehensive understanding of Governance, Risk, and Compliance (GRC) in the field of cybersecurity. It includes scripts and tools to automate risk assessment and compliance checks, helping organizations manage risks and ensure adherence to regulatory requirements.
+This project demonstrates a comprehensive understanding of Governance, Risk, and Compliance (GRC) in the field of cybersecurity. It includes scripts and tools to automate risk assessment and compliance checks, helping organizations manage risks and ensure adherence to regulatory requirements.<br>
+<a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/Project_Description.md">Project Description</a>
 
 ## Overview
 <img width="1106" alt="Screenshot 2024-08-08 at 11 20 28 PM" src="https://github.com/user-attachments/assets/fffd5168-dacd-4c4f-af38-e1692128b767">
@@ -68,11 +69,11 @@ python tools/grc_tool/grc_tool.py
 
 ## Documentation
 - Detailed explanations and examples for each component are available in the `docs/` directory:
-  - Introduction
-  - Governance
-  - Risk Management
-  - Compliance
-  - Conclusion
+  - <a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/docs/Introduction.md">Introduction</a>
+  - <a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/docs/Governance.md">Governance</a>
+  - <a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/docs/Risk_Management.md">Risk Management</a>
+  - <a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/docs/Compliance.md">Compliance</a>
+  - <a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/docs/Conclusion.md">Conclusion</a>
 
 ## Project Structure
 ```
