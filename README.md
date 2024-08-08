@@ -33,11 +33,13 @@ cd GRC-Cybersecurity
 python3 -m venv venv
 source venv/bin/activate
 ```
+![Screenshot 2024-08-08 223802](https://github.com/user-attachments/assets/da58ec98-f923-47ca-9516-1fbc99c9b100)
 
 ### 3. Install Required Libraries:
 ```
 pip install -r tools/grc_tool/requirements.txt
 ```
+![Screenshot 2024-08-08 223835](https://github.com/user-attachments/assets/f28a2422-e6eb-42b3-b498-f741cfee1f11)
 
 ## Step 2: Usage
 ### 1. Running the Risk Assessment:
@@ -46,6 +48,7 @@ pip install -r tools/grc_tool/requirements.txt
 python scripts/risk_assessment.py
 ```
 - This will generate a report in `reports/risk_assessment_report.xlsx`.
+![Screenshot 2024-08-08 223700](https://github.com/user-attachments/assets/cee19806-8d8c-490a-8e3b-44e4f4565d98)
 
 
 ### 2. Running the Compliance Check:
@@ -54,6 +57,7 @@ python scripts/risk_assessment.py
 python scripts/compliance_check.py
 ```
 - This will generate a report in `reports/compliance_report.xlsx`.
+![Screenshot 2024-08-08 223707](https://github.com/user-attachments/assets/663e09ae-8e59-4516-b87f-3d88698a380a)
 
 ### 3. Running the Integrated GRC Tool:
 - To run both the risk assessment and compliance check together, use the integrated tool:
@@ -61,6 +65,8 @@ python scripts/compliance_check.py
 python tools/grc_tool/grc_tool.py
 ```
 - This will generate both reports in the `reports/` directory.
+![Screenshot 2024-08-08 223712](https://github.com/user-attachments/assets/195abb28-65b4-4f36-9d53-5303d666255a) <br><br>
+![Screenshot 2024-08-08 223733](https://github.com/user-attachments/assets/6468952c-5c39-4e1c-9939-932fbcb1f26e)
 
 ## Example Files
 - **Risk Assessment Data**: `examples/sample_risk_assessment.xlsx`
