@@ -36,6 +36,30 @@ source venv/bin/activate
 ![Screenshot 2024-08-08 223802](https://github.com/user-attachments/assets/da58ec98-f923-47ca-9516-1fbc99c9b100)
 
 ### 3. Install Required Libraries:
+
+**Pandas**:
+- `pandas` is a powerful open-source data analysis and manipulation library for Python.
+- It provides data structures like DataFrames and Series, which allow for efficient handling, cleaning, and analysis of structured data.
+- In this GRC project, `pandas` is used to load, manipulate, and process data from Excel files.
+- Specifically, it reads data from the Excel sheets, applies compliance checks, performs risk assessments, and generates reports in the form of new Excel files.
+- The library's DataFrame structure is particularly useful for filtering and evaluating rows of data based on the compliance criteria defined in the configuration files.
+
+**Openpyxl**:
+- `openpyxl` is a Python library used to read and write Excel 2010 `.xlsx` files.
+- It provides a flexible way to interact with Excel files, allowing for the creation, reading, editing, and formatting of spreadsheets.
+- `openpyxl` is used by `pandas` under the hood to handle the reading and writing of Excel files.
+- When the project scripts load data from an Excel file, `pandas` uses `openpyxl` to interface with the `.xlsx` format.
+- Similarly, when generating reports (e.g., compliance and risk assessment reports), `pandas` leverages `openpyxl` to save the results back into an Excel format that can be easily shared and reviewed.
+
+**PyYAML**:
+- `PyYAML` is a Python library that allows for parsing and writing YAML (YAML Ain't Markup Language), a human-readable data serialization standard.
+- YAML is often used for configuration files due to its simplicity and ease of use.
+- In this GRC project, `PyYAML` is used to load configuration data from YAML files.
+- These configuration files specify the compliance rules and criteria that the scripts use to evaluate the data.
+- For instance, `grc_tool_config.yaml` is loaded using `PyYAML` to provide the criteria against which the compliance of each requirement is checked.
+- This makes the project flexible and easy to configure, as the rules can be updated by simply editing the YAML files without needing to change the code itself.
+
+#### Install Libraries:
 ```
 pip install -r tools/grc_tool/requirements.txt
 ```
