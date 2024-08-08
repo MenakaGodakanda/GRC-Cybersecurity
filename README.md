@@ -63,7 +63,7 @@ source venv/bin/activate
 ```
 pip install -r tools/grc_tool/requirements.txt
 ```
-![Screenshot 2024-08-08 223835](https://github.com/user-attachments/assets/f28a2422-e6eb-42b3-b498-f741cfee1f11)
+![Screenshot 2024-08-08 223835](https://github.com/user-attachments/assets/eed8a68a-52a5-4586-888b-39b03b9c5ed1)
 
 ## Step 2: Usage
 ### 1. Running the Risk Assessment:
