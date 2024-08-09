@@ -14,7 +14,7 @@ def main():
     save_risk_report(assessed_risk_data, 'reports/risk_assessment_report.xlsx')
     print("Results saved in reports/risk_assessment_report.xlsx")
     
-    compliance_config = load_config('configs/grc_tool_config.xlsx')
+    compliance_config = load_data('configs/grc_tool_config.xlsx')
     compliance_data = load_data('examples/sample_compliance_data.xlsx')
     compliant_data = check_compliance(compliance_data, compliance_config)
     save_compliance_report(compliant_data, 'reports/compliance_report.xlsx')
