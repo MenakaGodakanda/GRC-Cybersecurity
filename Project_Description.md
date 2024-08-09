@@ -10,7 +10,7 @@ This project demonstrates a comprehensive understanding of Governance, Risk, and
 - **Report Generation**: After assessing the risks, the project can save the evaluated data back into an Excel file. This report can then be used by stakeholders to understand and mitigate identified risks.
 
 ### 2. Compliance Check
-- **Configuration Loading**: The project can load configuration data from a YAML file, which specifies the compliance requirements that must be checked. This makes the compliance checks adaptable to different regulatory frameworks and standards.
+- **Configuration Loading**: The project can load configuration data from a Excel file, which specifies the compliance requirements that must be checked. This makes the compliance checks adaptable to different regulatory frameworks and standards.
 - **Compliance Verification**: The project verifies whether the data entries meet the specified requirements by comparing the actual values against the expected values in the configuration file.
 - **Compliance Reporting**: Similar to the risk assessment, the project generates a compliance report in an Excel format. This report indicates which entries are compliant or non-compliant, making it easier to address gaps in compliance.
 
@@ -19,7 +19,7 @@ This project demonstrates a comprehensive understanding of Governance, Risk, and
 - **Main Orchestrator**: The `grc_tool.py` script serves as the main orchestrator, coordinating the execution of both risk assessment and compliance checks. This design ensures a streamlined workflow for the user, where both tasks can be performed with a single command.
 
 ### 4. Customizable and Extendable
-- **Customizable Configurations**: Through the use of YAML configuration files, the project allows users to define their own compliance requirements. This makes the tool adaptable to different organizations or regulatory standards.
+- **Customizable Configurations**: Through the use of Excel configuration files, the project allows users to define their own compliance requirements. This makes the tool adaptable to different organizations or regulatory standards.
 - **Easy to Extend**: Given the modular nature of the project, new features or checks can be easily added. For instance, additional risk factors or compliance checks could be implemented without needing to rewrite the core functionality.
 
 ### 5. User-Friendly Output
@@ -30,7 +30,6 @@ This project demonstrates a comprehensive understanding of Governance, Risk, and
 ### 6. Open-Source Libraries
 - **Pandas**: Used for handling data manipulation and analysis, making it easier to work with tabular data.
 - **OpenPyXL**: Facilitates the reading and writing of Excel files, enabling the project to generate reports that are easy to share and understand.
-- **PyYAML**: Handles the reading of YAML configuration files, allowing the project to be flexible and configurable for various compliance needs.
 
 ### 7. Ease of Use
 - **Minimal Setup**: The project is easy to set up and use, with clear instructions provided in the README.md file. The use of a virtual environment ensures that dependencies are managed correctly, reducing the risk of conflicts.
@@ -93,13 +92,12 @@ This project demonstrates a comprehensive understanding of Governance, Risk, and
 ### Compliance Check (`scripts/compliance_check.py`)
 
 #### 1. Imports
-- **yaml**: The script imports the `yaml` library, which is used to read and parse YAML configuration files. YAML is often used for configuration because of its human-readable format.
 - **pandas**: The script also imports `pandas`, which is used for data manipulation. In this script, `pandas` is used to read data from Excel files, perform compliance checks, and save the results back to an Excel file.
 
 #### 2. Function: load_config
-- **Purpose**: This function reads a YAML configuration file and returns its contents as a Python dictionary.
+- **Purpose**: This function reads a Excel configuration file and returns its contents as a Python dictionary.
 - **Parameters**:
-  - `file_path`: The path to the YAML configuration file.
+  - `file_path`: The path to the Excel configuration file.
 - **Functionality**:
   - The function opens the specified file in read mode.
   - `yaml.safe_load(file)`: This line parses the YAML file content and converts it into a Python dictionary.
@@ -233,10 +231,10 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
 - Below are the input and output of running the `scripts/risk_assessment.py` script.
 
 - **Input File**: `examples/sample_risk_assessment.xlsx`
-  ![Screenshot 2024-08-09 135639](https://github.com/user-attachments/assets/35d38247-a042-4904-b6b4-a551cdb47902)
+  ![Screenshot 2024-08-09 225654](https://github.com/user-attachments/assets/ac082d6f-bea6-458d-8429-05ec3bdd4eb0)
 
 - **Output File**: `reports/risk_assessment_report.xlsx`
-  ![Screenshot 2024-08-09 135359](https://github.com/user-attachments/assets/d7667b93-05c8-4294-a308-f11e73bf51d4)
+  ![Screenshot 2024-08-09 225720](https://github.com/user-attachments/assets/cdb52f89-3d63-485f-ac12-4fb0ee9cc90d)
 
 - **Explanation**: The `Risk_Level` column is calculated as `Impact * Likelihood`. For `Risk 1`, the risk level is `5 * 2 = 10`, and for `Risk 2`, it is `3 * 4 = 12`.
 
@@ -244,15 +242,18 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
 - Below are the input and output of running the `scripts/compliance_check.py` script.
 
 - **Input File**: `examples/sample_compliance_data.xlsx`
-  ![Screenshot 2024-08-09 135301](https://github.com/user-attachments/assets/e0d604d9-2acd-43c1-b756-dd5d50ee07d5)
+  ![Screenshot 2024-08-09 224135](https://github.com/user-attachments/assets/e349c4ea-c461-4117-899e-acdb5ddcd4ec)
 
-- **Input File**: `configs/grc_tool_config.yaml`
-  ![Screenshot 2024-08-09 140116](https://github.com/user-attachments/assets/e674f36d-8c19-4950-b2c3-b184ac365b92)
+- **Input File**: `configs/grc_tool_config.xlsx`
+  ![Screenshot 2024-08-09 224149](https://github.com/user-attachments/assets/9a6a4ed5-9cce-45ae-bd80-b69963a2572e)
 
 - **Output File**: `reports/compliance_report.xlsx`
-  ![Screenshot 2024-08-09 135419](https://github.com/user-attachments/assets/78ffc69b-d9c8-4069-be4c-c12d8aad7d2e)
+  ![Screenshot 2024-08-09 224215](https://github.com/user-attachments/assets/b72e6846-cab7-481c-89df-32497afde0dc)
 
-- **Explanation**: The `Compliant` column is calculated based on whether the `Value` matches the expected value in the configuration file. Both `Requirement1` and `Requirement2` meet their compliance criteria.
+- **Explanation**:
+  - The `Compliant` column is calculated based on whether the `Value` matches the expected value in the configuration file.
+  - Both `Requirement1` and `Requirement2` meet their compliance criteria.
+  - However, Requirement3` and `Requirement4` do not meet their compliance criteria.
 
 ### 3. Integrated GRC Tool Output
 - `tools/grc_tool/grc_tool.py` combines the functionalities of both risk assessment and compliance check.
@@ -262,9 +263,9 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
   - **Compliance Report**: Contains the results of the compliance check, indicating whether each requirement is met.
 - **Output Files**:
   - `reports/risk_assessment_report.xlsx`
-    ![Screenshot 2024-08-09 135359](https://github.com/user-attachments/assets/3e8bcd23-1a29-43f7-8632-5b30f9e9dd2a)
+    ![Screenshot 2024-08-09 225720](https://github.com/user-attachments/assets/1943c889-eabb-4dcd-81ca-27a299c25a31)
 
   - `reports/compliance_report.xlsx`
-    ![Screenshot 2024-08-09 135419](https://github.com/user-attachments/assets/eb0a62b2-2cc1-4507-9a2c-92773d9d76e6)
+    ![Screenshot 2024-08-09 224215](https://github.com/user-attachments/assets/c421ad66-b991-447d-99bd-c99cf9677f62)
 
 - This integrated approach provides a comprehensive view of both risk and compliance, generating the necessary reports to assist in governance, risk management, and compliance tasks.
