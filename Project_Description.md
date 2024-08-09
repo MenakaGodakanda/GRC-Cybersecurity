@@ -233,8 +233,10 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
 - Below are the input and output of running the `scripts/risk_assessment.py` script.
 
 - **Input File**: `examples/sample_risk_assessment.xlsx`
+  ![Screenshot 2024-08-09 135639](https://github.com/user-attachments/assets/35d38247-a042-4904-b6b4-a551cdb47902)
 
 - **Output File**: `reports/risk_assessment_report.xlsx`
+  ![Screenshot 2024-08-09 135359](https://github.com/user-attachments/assets/d7667b93-05c8-4294-a308-f11e73bf51d4)
 
 - **Explanation**: The `Risk_Level` column is calculated as `Impact * Likelihood`. For `Risk 1`, the risk level is `5 * 2 = 10`, and for `Risk 2`, it is `3 * 4 = 12`.
 
@@ -242,8 +244,13 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
 - Below are the input and output of running the `scripts/compliance_check.py` script.
 
 - **Input File**: `examples/sample_compliance_data.xlsx`
+  ![Screenshot 2024-08-09 135301](https://github.com/user-attachments/assets/e0d604d9-2acd-43c1-b756-dd5d50ee07d5)
+
+- **Input File**: `configs/grc_tool_config.yaml`
+  ![Screenshot 2024-08-09 140116](https://github.com/user-attachments/assets/e674f36d-8c19-4950-b2c3-b184ac365b92)
 
 - **Output File**: `reports/compliance_report.xlsx`
+  ![Screenshot 2024-08-09 135419](https://github.com/user-attachments/assets/78ffc69b-d9c8-4069-be4c-c12d8aad7d2e)
 
 - **Explanation**: The `Compliant` column is calculated based on whether the `Value` matches the expected value in the configuration file. Both `Requirement1` and `Requirement2` meet their compliance criteria.
 
@@ -255,5 +262,9 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
   - **Compliance Report**: Contains the results of the compliance check, indicating whether each requirement is met.
 - **Output Files**:
   - `reports/risk_assessment_report.xlsx`
+    ![Screenshot 2024-08-09 135359](https://github.com/user-attachments/assets/3e8bcd23-1a29-43f7-8632-5b30f9e9dd2a)
+
   - `reports/compliance_report.xlsx`
+    ![Screenshot 2024-08-09 135419](https://github.com/user-attachments/assets/eb0a62b2-2cc1-4507-9a2c-92773d9d76e6)
+
 - This integrated approach provides a comprehensive view of both risk and compliance, generating the necessary reports to assist in governance, risk management, and compliance tasks.
