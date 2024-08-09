@@ -51,14 +51,6 @@ source venv/bin/activate
 - When the project scripts load data from an Excel file, `pandas` uses `openpyxl` to interface with the `.xlsx` format.
 - Similarly, when generating reports (e.g., compliance and risk assessment reports), `pandas` leverages `openpyxl` to save the results back into an Excel format that can be easily shared and reviewed.
 
-**PyYAML**:
-- `PyYAML` is a Python library that allows for parsing and writing YAML (YAML Ain't Markup Language), a human-readable data serialization standard.
-- YAML is often used for configuration files due to its simplicity and ease of use.
-- In this GRC project, `PyYAML` is used to load configuration data from YAML files.
-- These configuration files specify the compliance rules and criteria that the scripts use to evaluate the data.
-- For instance, `grc_tool_config.yaml` is loaded using `PyYAML` to provide the criteria against which the compliance of each requirement is checked.
-- This makes the project flexible and easy to configure, as the rules can be updated by simply editing the YAML files without needing to change the code itself.
-
 #### Install Libraries:
 ```
 pip install -r tools/grc_tool/requirements.txt
@@ -95,7 +87,7 @@ python tools/grc_tool/grc_tool.py
 ## Example Files
 - **Risk Assessment Data**: `examples/sample_risk_assessment.xlsx`
 - **Compliance Data**: `examples/sample_compliance_data.xlsx`
-- **Compliance Configuration**: `configs/grc_tool_config.yaml`
+- **Compliance Configuration**: `configs/grc_tool_config.xlsx`
 
 ## Documentation
 - Detailed explanations and examples for each component are available in the `docs/` directory:
@@ -109,7 +101,7 @@ python tools/grc_tool/grc_tool.py
 ```
 GRC-Cybersecurity/
 ├── configs
-│   └── grc_tool_config.yaml      # Configuration file for compliance checks
+│   └── grc_tool_config.xlsx      # Configuration file for compliance checks
 ├── docs
 │   ├── Introduction.md           # Introduction to the project
 │   ├── Governance.md             # Governance concepts and examples
