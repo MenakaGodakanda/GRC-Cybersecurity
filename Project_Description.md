@@ -92,68 +92,62 @@ This project demonstrates a comprehensive understanding of Governance, Risk, and
 ### Compliance Check (`scripts/compliance_check.py`)
 
 #### 1. Imports
-- **pandas**: The script also imports `pandas`, which is used for data manipulation. In this script, `pandas` is used to read data from Excel files, perform compliance checks, and save the results back to an Excel file.
+- **pandas**: The `pandas` library is imported to handle data manipulation and analysis, especially for reading from and writing to Excel files. Pandas is a powerful tool for working with structured data and is commonly used in data science and analytics.
 
 #### 2. Function: load_config
-- **Purpose**: This function reads a Excel configuration file and returns its contents as a Python dictionary.
+- **Purpose**: This function loads the configuration data from an Excel file.
 - **Parameters**:
-  - `file_path`: The path to the Excel configuration file.
+  - `file_path`: The path to the Excel file containing the configuration data.
 - **Functionality**:
-  - The function opens the specified file in read mode.
-  - `yaml.safe_load(file)`: This line parses the YAML file content and converts it into a Python dictionary.
-- **Returns**: The configuration data as a dictionary.
-- If file_path is `'configs/grc_tool_config.yaml'`, the function will return the contents of this YAML file as a dictionary.
+  - `pd.read_excel(file_path)`: Reads the Excel file into a DataFrame, which is a 2-dimensional labelled data structure in pandas.
+- **Returns**: The function returns a DataFrame containing the configuration data, which will later be used to check compliance.
 
 #### 3. Function: load_data
-- **Purpose**: This function reads data from an Excel file into a pandas DataFrame.
+- **Purpose**: This function loads the input data (the data to be checked for compliance) from an Excel file.
 - **Parameters**:
-  - `file_path`: The path to the Excel file to be loaded.
+  - `file_path`: The path to the Excel file containing the input data.
 - **Functionality**:
-  - `pd.read_excel(file_path)`: This pandas function reads the Excel file specified by `file_path` and returns its contents as a DataFrame.
-- **Returns**: The DataFrame containing the data from the Excel file.
-- If file_path is 'examples/sample_compliance_data.xlsx', this function loads the data from this file into a DataFrame.
+  - `pd.read_excel(file_path)`: Reads the Excel file into a DataFrame.
+- **Returns**: The function returns a DataFrame containing the input data that will be checked against the compliance criteria.
 
 #### 4. Function: check_compliance
-- **Purpose**: This function checks each row in the data against the compliance criteria specified in the YAML configuration.
+- **Purpose**: This function checks whether each entry in the input data complies with the requirements specified in the configuration data.
 - **Parameters**:
   - `data`: A pandas DataFrame containing the data to be assessed. The DataFrame is expected to have columns named `Requirement` and `Value`.
-  - `config`: A dictionary containing the compliance criteria, loaded from the YAML file.
+  - `config`: A dictionary containing the compliance criteria, loaded from the Excel file.
 - **Functionality**:
   - **Column Check**:
     - The script first checks if the DataFrame contains the necessary columns: `Requirement` and `Value`.
     - If either column is missing, a `KeyError` is raised with a relevant message.
   - **Compliance Check**:
-    - The script adds a new column called `Compliant` to the DataFrame.
-    - It uses the `apply` function to evaluate each row, checking if the `Value` in that row matches the expected value from the `config` dictionary for the corresponding `Requirement`.
-    - `config.get(row['Requirement'], None)` retrieves the expected value for the `Requirement` from the `config` dictionary. If the requirement is not found in the dictionary, it defaults to `None`.
-    - If the `Value` matches the expected value, the `Compliant` column is set to `True`; otherwise, it is set to `False`.
-- **Returns**: The DataFrame with an additional `Compliant` column indicating whether each requirement is compliant.
-- If a row has `Requirement = "Requirement1"` and `Value = "Yes"`, and the `config` dictionary specifies that `Requirement1` should have the value "Yes", the `Compliant` column for that row will be `True`.
+    - `data.apply(lambda row: ...)`: This line applies a function to each row of the DataFrame. The function checks if the 'Value' in the current row of the input data matches the corresponding 'Value' in the configuration DataFrame.
+    - **Logic Explanation**:
+      - `config.loc[config['Requirement'] == row['Requirement'], 'Value']`: This part filters the configuration DataFrame to find the 'Value' corresponding to the 'Requirement' in the current row.
+      - `.values[0]`: Retrieves the first (and ideally only) matching value from the filtered configuration data.
+      - `if not config.loc[...].empty else False`: Checks if there was a match for the 'Requirement' in the configuration data. If a match is found, it compares the values. If no match is found, it returns `False` (indicating non-compliance).
+    - **Result**:
+      - A new column `'Compliant'` is added to the input data DataFrame. This column will contain `True` if the data is compliant with the configuration or `False` if it is not.
+- **Returns**: The function returns the modified DataFrame with the added `'Compliant'` column.
 
 #### 5. Function: save_report
-- **Purpose**: This function saves the DataFrame (with compliance results) to an Excel file.
+- **Purpose**: This function saves the compliance check results to an Excel file.
 - **Parameters**:
-  - `data`: The pandas DataFrame to be saved.
-  - `output_path`: The path where the Excel file will be saved.
+  - `data`: The DataFrame containing the compliance results.
+  - `output_path`: The path where the output Excel file will be saved.
 - **Functionality**:
-  - `data.to_excel(output_path, index=False)`: This pandas function saves the DataFrame to an Excel file at the specified `output_path`. The `index=False` argument ensures that row indices are not written to the file.
-- If `output_path` is `'reports/compliance_report.xlsx'`, this function saves the DataFrame to that file.
+  - `data.to_excel(output_path, index=False)`: Writes the DataFrame to an Excel file at the specified path. The `index=False` argument ensures that the row indices are not written to the file.
 
 #### 6. Main Execution Block
-- **Purpose**: This block is executed when the script is run directly (not imported as a module). It orchestrates the loading of configuration and data, checking of compliance, and saving of results.
+- **Purpose**: This block is executed when the script is run directly. It orchestrates the entire compliance checking process.
 - **Steps**:
   - **Load Configuration**:
-    - `config = load_config('configs/grc_tool_config.yaml')`
-    - The script loads the compliance criteria from the YAML file `'configs/grc_tool_config.yaml'`.
+    - **Configuration**: The `load_config` function is called to load the compliance requirements from the `configs/grc_tool_config.xlsx` file.
   - **Load Data**:
-    - `data = load_data('examples/sample_compliance_data.xlsx')`
-    - The script loads the data from the Excel file `'examples/sample_compliance_data.xlsx'` into a DataFrame.
+    - **Data**: The `load_data` function is called to load the input data from the `examples/sample_compliance_data.xlsx` file.
   - **Check Compliance**:
-    - `compliant_data = check_compliance(data, config)`
-    - The script checks the compliance of each row in the DataFrame against the criteria in the configuration file and adds a `Compliant` column.
+    - The  `check_compliance` function is called to check if the input data complies with the loaded configuration.
   - **Save Report**:
-    - `save_report(compliant_data, 'reports/compliance_report.xlsx')`
-    - The script saves the compliance results to `'reports/compliance_report.xlsx'`.
+    - The `save_report` function saves the compliance results to the `reports/compliance_report.xlsx` file.
   - **Print Confirmation**:
     - `print("Results saved in reports/compliance_report.xlsx")`
     - A message is printed to the console to confirm that the results have been saved successfully.
@@ -183,7 +177,7 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
     - `assess_risks`: Assesses risks based on the data.
     - `save_report`: Saves the assessed risk data to an Excel file. It is imported with an alias `save_risk_report` to differentiate it from the `save_report` function in `compliance_check.py`.
   - **From `compliance_check.py`**:
-    - `load_config`: Loads the YAML configuration file.
+    - `load_data`: Loads data from an Excel file.
     - `check_compliance`: Checks compliance based on the data and configuration.
     - `save_report`: Saves the compliance results to an Excel file, imported with an alias `save_compliance_report`.
 
@@ -205,14 +199,14 @@ The grc_tool.py script acts as the main orchestrator for running both risk asses
       - Prints a message to confirm that the risk assessment report has been saved.
   - **Compliance Check**:
     - **Load Compliance Configuration**:
-      - `compliance_config = load_config('configs/grc_tool_config.yaml')`
-      - Loads the YAML configuration file containing compliance requirements.
+      - `compliance_config = load_data('configs/grc_tool_config.xlsx')`
+      - Loads data from an Excel file containing compliance requirements.
     - **Load Compliance Data**:
       - `compliance_data = load_data('examples/sample_compliance_data.xlsx')`
       - Loads data from an Excel file containing sample compliance data.
     - **Check Compliance**:
       - `compliant_data = check_compliance(compliance_data, compliance_config)`
-      - Checks the compliance of the data against the requirements specified in the YAML file.
+      - Checks the compliance of the data against the requirements specified in the Excel file.
     - **Save Compliance Report**:
       - `save_compliance_report(compliant_data, 'reports/compliance_report.xlsx')`
       - Saves the compliance check results to an Excel file.
