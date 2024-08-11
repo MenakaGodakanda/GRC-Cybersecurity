@@ -84,6 +84,9 @@ python tools/grc_tool/grc_tool.py
 ![Screenshot 2024-08-08 223712](https://github.com/user-attachments/assets/195abb28-65b4-4f36-9d53-5303d666255a) <br><br>
 ![Screenshot 2024-08-08 223733](https://github.com/user-attachments/assets/6468952c-5c39-4e1c-9939-932fbcb1f26e)
 
+### 4. Demonstration
+- A detail explanation of output is demonstrated in the <a href="https://github.com/MenakaGodakanda/GRC-Cybersecurity/blob/main/Project_Description.md">Project Description</a> under `Input and Output` section.
+
 ## Example Files
 - **Risk Assessment Data**: `examples/sample_risk_assessment.xlsx`
 - **Compliance Data**: `examples/sample_compliance_data.xlsx`
